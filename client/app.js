@@ -11,23 +11,11 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 require('reflect-metadata');
 require('zone.js/dist/zone');
 var core_1 = require('@angular/core');
-var platform_browser_dynamic_1 = require('@angular/platform-browser-dynamic');
+var angular2_meteor_auto_bootstrap_1 = require('angular2-meteor-auto-bootstrap');
+var parties_1 = require('../collections/parties');
 var Socially = (function () {
     function Socially() {
-        this.parties = [
-            { 'name': 'Dubstep-Free Zone',
-                'description': 'Can we please just for an evening not listen to dubstep.',
-                'location': 'Palo Alto'
-            },
-            { 'name': 'All dubstep all the time',
-                'description': 'Get it on!',
-                'location': 'Palo Alto'
-            },
-            { 'name': 'Savage lounging',
-                'description': 'Leisure suit required. And only fiercest manners.',
-                'location': 'San Francisco'
-            }
-        ];
+        this.parties = parties_1.Parties.find();
     }
     Socially = __decorate([
         core_1.Component({
@@ -38,5 +26,5 @@ var Socially = (function () {
     ], Socially);
     return Socially;
 }());
-platform_browser_dynamic_1.bootstrap(Socially);
+angular2_meteor_auto_bootstrap_1.bootstrap(Socially);
 //# sourceMappingURL=app.js.map
