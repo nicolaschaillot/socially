@@ -21,6 +21,7 @@
   ],
   "files": [
     "client/app.ts",
+    "client/imports/parties-form/parties-form.ts",
     "collections/parties.ts",
     "server/load-parties.ts",
     "server/main.ts",

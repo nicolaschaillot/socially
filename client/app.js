@@ -13,14 +13,19 @@ require('zone.js/dist/zone');
 var core_1 = require('@angular/core');
 var angular2_meteor_auto_bootstrap_1 = require('angular2-meteor-auto-bootstrap');
 var parties_1 = require('../collections/parties');
+var parties_form_1 = require('./imports/parties-form/parties-form');
 var Socially = (function () {
     function Socially() {
         this.parties = parties_1.Parties.find();
     }
+    Socially.prototype.removeParty = function (party) {
+        parties_1.Parties.remove(party._id);
+    };
     Socially = __decorate([
         core_1.Component({
             selector: 'app',
-            templateUrl: 'client/app.html'
+            templateUrl: 'client/app.html',
+            directives: [parties_form_1.PartiesForm]
         }), 
         __metadata('design:paramtypes', [])
     ], Socially);
