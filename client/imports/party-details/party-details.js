@@ -16,10 +16,20 @@ var PartyDetails = (function () {
         var partyId = params.get('partyId');
         this.party = parties_ts_1.Parties.findOne(partyId);
     }
+    PartyDetails.prototype.saveParty = function (party) {
+        parties_ts_1.Parties.update(party._id, {
+            $set: {
+                name: party.name,
+                description: party.description,
+                location: party.location
+            }
+        });
+    };
     PartyDetails = __decorate([
         core_1.Component({
             selector: 'party-details',
-            templateUrl: '/client/imports/party-details/party-details.html'
+            templateUrl: '/client/imports/party-details/party-details.html',
+            directives: [router_deprecated_1.RouterLink]
         }), 
         __metadata('design:paramtypes', [router_deprecated_1.RouteParams])
     ], PartyDetails);

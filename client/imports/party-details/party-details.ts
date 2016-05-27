@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
-import { RouteParams } from '@angular/router-deprecated';
+import { RouteParams, RouterLink } from '@angular/router-deprecated';
 import {Parties} from '../../../collections/parties.ts';
 
 @Component({
   selector: 'party-details',
-  templateUrl: '/client/imports/party-details/party-details.html'
+  templateUrl: '/client/imports/party-details/party-details.html',
+  directives: [RouterLink]
 })
 export class PartyDetails {
   party: Object;
@@ -13,4 +14,15 @@ export class PartyDetails {
     var partyId = params.get('partyId');
     this.party = Parties.findOne(partyId);
   }
+
+ saveParty(party) {
+   Parties.update(party._id, {
+     $set: {
+       name: party.name,
+       description: party.description,
+       location: party.location
+     }
+   });
+ }
+
 }
